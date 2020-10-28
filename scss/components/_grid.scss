@@ -1,0 +1,38 @@
+
+.container {
+  width: 100%;
+  margin-right: 50px; 
+  max-height: 100vh;
+
+  &--fluid {
+    max-width: none;
+  }
+
+  &__row {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+
+    @for $i from 1 through $columns {
+      .col-mob-#{$i} {
+        flex: 0 0 (100 / ($columns / $i) * 1%);
+      }
+    }
+
+    @include tablet {
+      @for $i from 1 through $columns {
+        .col-tbl-#{$i} {
+          flex: 0 0 (100 / ($columns / $i) * 1%);
+        }
+      }
+    }
+
+    @include desktop {
+      @for $i from 1 through $columns {
+        .col-dsk-#{$i} {
+          flex: 0 0 (100 / ($columns / $i) * 1%);
+        }
+      }
+    }
+  }
+}
