@@ -12,16 +12,19 @@ function App() {
   useEffect(() =>{
     if(subTotal > 100 ){
       setShippingCost('FREE Delivery')
-      setGrandTotal(subTotal)
-      console.log(subTotal)
+      setGrandTotal(parseFloat(subTotal).toFixed(2))
+      console.log(subTotal  )
+
     }else if(subTotal == 0.00){
       setShippingCost(0)  
+      setGrandTotal((parseFloat(shippingCost) + parseFloat(subTotal)).toFixed(2))
     }
     else{
       setShippingCost(subTotal !== 0 && subTotal <= 100);
       setShippingCost((23.80).toFixed(2)) 
+      setGrandTotal((parseFloat(shippingCost) + parseFloat(subTotal)).toFixed(2))
     }
-    setGrandTotal((parseFloat(shippingCost) + parseFloat(subTotal)).toFixed(2))
+    
 
     if(closeBnt === true){
       setSubtotal(0);
